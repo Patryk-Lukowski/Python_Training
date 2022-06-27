@@ -1,0 +1,27 @@
+print('Welcome to my Quiz!\nTo chose the answer please type "a" or "b".\nPress "enter" to confirm your selection.\n')
+
+Quiz = {
+'Question': ['Which one is water?', 'Which one is carbon dioxide?', 'Did you like the Quiz?;)'],
+'Answer a': ('H2O', 'CO3', 'yes'),
+'Answer b': ['H3O', 'CO2', 'no'],
+'Points': ['a', 'b', 'a']
+}
+x = len(Quiz['Question'])
+
+k = 0
+for n in range(x):
+  while True:
+    Answer = input('{}\n a) {}\n b) {}\n'.format(Quiz['Question'][n], Quiz['Answer a'][n], Quiz['Answer b'][n]))
+    if not(Answer in ('a','b')):
+      print('"{}" is an invalid input.\nPlease type "a" or "b".\nTry again.\n'.format(Answer))
+      continue
+    else:
+      break      
+  if Answer == Quiz['Points'][n]:
+    k += 1
+    print('Correct!\n')
+  else:
+    print('Wrong!\n')
+#  print('next iteration of for loop\n') # check where next iteration happens
+
+print('You scored {}/{}.'.format(k,x))
