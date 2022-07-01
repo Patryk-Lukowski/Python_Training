@@ -1,0 +1,55 @@
+
+print('Welcome to my Game of Rock, Paper, Scissors!\n')
+
+import random
+
+win_matrix = {'Rock': 'Scissors', 'Paper': 'Rock', 'Scissors': 'Paper',}
+list = ['Rock', 'Paper', 'Scissors']
+your_points = 0
+computer_points = 0
+game_number = 1
+
+def RPS(a,b):
+  global your_points, computer_points
+  if a == b:
+    print('Draw.')
+  elif win_matrix[a] == b:
+    print('You win.')
+    your_points += 1
+  else:
+    print('You lose.')
+    computer_points += 1
+    
+while True:
+  try:
+    num = input('How many games you want to play?\n')
+    print("\033[A\033[A")
+    number_of_games = int(num)
+    break
+  except ValueError:
+    print('Please input positive whole number\n')
+    continue
+    
+while game_number <= int(number_of_games):
+  computer_pick = random.choice(('Rock', 'Paper', 'Scissors'))
+  your_pick = input('\nPick "Rock", "Paper" or "Scissors".\n\n')
+  print("\033[A\033[A")
+  if not(your_pick in list):
+    print('Please input "Rock", "Paper" or "Scissors".\nDo not use quotation marks.\nStart with capital letter.\n')
+    continue
+  else:
+    print("Your pick: {}.\nCoputer's pick: {}.".format(your_pick,computer_pick))
+    RPS(your_pick,computer_pick)
+    game_number += 1
+    continue
+if your_points == computer_points:
+  won_lost = 'draw'
+  exit_message = 'What are the chances?!'
+elif your_points > computer_points:
+  won_lost = 'won'
+  exit_message = 'Congratulations!'  
+else:
+  won_lost = 'lost'
+  exit_message = 'Good Luck next time.'
+  
+print('\nYou {} {} to {}.\n{}'.format(won_lost,your_points,computer_points,exit_message))
