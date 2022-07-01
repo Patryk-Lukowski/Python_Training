@@ -12,6 +12,7 @@ k = 0
 for n in range(x):
   while True:
     Answer = input('{}\n a) {}\n b) {}\n'.format(Quiz['Question'][n], Quiz['Answer a'][n], Quiz['Answer b'][n]))
+    print("\033[A\033[A")
     if not(Answer in ('a','b')):
       print('"{}" is an invalid input.\nPlease type "a" or "b".\nTry again.\n'.format(Answer))
       continue
