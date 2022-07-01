@@ -12,7 +12,6 @@ while True:
   Ans = input('Try to guess the number.\n')
   print("\033[A\033[A")
   try:
-    int(Ans)
     Answer=int(Ans)
   except ValueError:
     print('Not an Integer\n')
