@@ -1,0 +1,171 @@
+
+print('Welcome to the adventure game.\n')
+name = input('What is your name?\n').capitalize()
+print("\033[A\033[A")
+print('Hello {}. Some background story.\n'.format(name))
+
+money = 100
+hit_points = 100
+stress = 0
+
+def enter_hero_status(hit_points,stress):
+  
+  if hit_points > 100:
+    hit_points = 100
+  elif hit_points <= 0:
+    Physical_death()
+  
+  if stress < 0:
+    stress = 0
+  elif stress >= 100:
+    Mental_death()
+  
+  if hit_points < 25:
+    hit_points_message = 'You are severly wounded.'
+  elif hit_points < 50:
+    hit_points_message = 'You are wounded.'
+  elif hit_points < 75:
+    hit_points_message = 'You are slightly wounded.'
+  else:
+    hit_points_message = 'You are in a good physical condition.'
+
+  if stress > 75:
+    stress_message = 'You are loosing your mind.'
+  elif stress > 50:
+    stress_message = 'You feel very stresfull.'
+  elif stress > 25:
+    stress_message = 'You are slightly stressed.'
+  else:
+    stress_message = 'You are in a good mental condition.'
+    
+  print('You have {} coins.\n{}\n{}\n'.format(money,hit_points_message,stress_message))
+
+def Physical_death():
+  print('Your body could not take it anymore. You died.')
+  quit()
+  
+def Mental_death():
+  print("Recent experiences had a heavy toll on your mind. It has driven you insane and you couldn't take it anymore. You decied to take your own life.")
+  quit()
+  
+def Intro():
+  
+  options = ['swim through', 'go around']
+  global money,hit_points,stress
+  enter_hero_status(hit_points,stress)
+  
+  while True:
+    your_input = input('You arrive at the bridge. It is broken. What will you do?\na) {}.\nb) {}.\n'.format(options[0],options[1])).lower()
+    print("\033[A\033[A")
+    
+    if not(your_input in ['a','b']):
+      print('Please select a or b.\n')
+      continue
+    
+    elif your_input == 'a':
+      decision = options[0]
+      print('You decided to {}.\nYou twisted your ankle.\n'.format(decision))
+      hit_points += -40
+      print('proceed to story 2a')
+      Story_2a()
+      break
+    
+    else:
+      decision = options[1]
+      print('You decided to {}.\nYou were traveing for 5 days and spent 10 coins in inns\n'.format(decision))
+      money += -10
+      print('proceed to story 2b')
+      Story_2b()
+      break
+
+def Story_2a():
+  
+  options = ['alpha', 'beta']
+  global money,hit_points,stress
+  enter_hero_status(hit_points,stress)
+
+  while True:
+    your_input = input('Story 2a. What will you do?\na) {}.\nb) {}.\n'.format(options[0],options[1])).lower()
+    print("\033[A\033[A")
+    
+    if not(your_input in ['a','b']):
+      print('Please select a or b.\n')
+      continue
+    
+    elif your_input == 'a':
+      decision = options[0]
+      print('You decided to {}.\n'.format(decision))
+      hit_points += -30
+      print('proceed to story 3')
+      Story_3()
+      break
+    
+    else:
+      decision = options[1]
+      print('You decided to {}.\n'.format(decision))
+      stress += 40
+      print('proceed to story 3')
+      Story_3()
+      break
+      
+def Story_2b():
+  
+  options = ['gamma', 'delta']
+  global money,hit_points,stress
+  enter_hero_status(hit_points,stress)
+
+  while True:
+    your_input = input('Story 2b. What will you do?\na) {}.\nb) {}.\n'.format(options[0],options[1])).lower()
+    print("\033[A\033[A")
+    
+    if not(your_input in ['a','b']):
+      print('Please select a or b.\n')
+      continue
+    
+    elif your_input == 'a':
+      decision = options[0]
+      print('You decided to {}.\n'.format(decision))
+      hit_points += -300
+      print('proceed to story 3')
+      Story_3()
+      break
+    
+    else:
+      decision = options[1]
+      print('You decided to {}.\n'.format(decision))
+      stress += 40
+      print('proceed to story 3')
+      Story_3()
+      break
+
+def Story_3():
+  
+  options = ['epsion', 'zeta']
+  global money,hit_points,stress
+  enter_hero_status(hit_points,stress)
+
+  while True:
+    your_input = input('Story 3. What will you do?\na) {}.\nb) {}.\n'.format(options[0],options[1])).lower()
+    print("\033[A\033[A")
+    
+    if not(your_input in ['a','b']):
+      print('Please select a or b.\n')
+      continue
+    
+    elif your_input == 'a':
+      decision = options[0]
+      print('You decided to {}.\n'.format(decision))
+      Physical_death()
+      break
+    
+    else:
+      decision = options[1]
+      print('You decided to {}.\n'.format(decision))
+      Mental_death()
+      break
+
+
+try:
+  Intro()
+except:
+  pass
