@@ -129,8 +129,8 @@ def Story_2b():
       print('Please select a or b.\n')
       continue
     
-    elif your_input == 'a' and broke == True:
-      print('You do not have enough money')
+    elif your_input == 'a' and broke is True:
+      print('customizable text. You do not have enough money.\n')
       continue
 
     elif your_input == 'a':   
